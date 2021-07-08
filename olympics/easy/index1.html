@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <link rel="stylesheet" href="style1.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nomad</title>
@@ -38,53 +39,94 @@
     .w-100 {
       width: 60% !important;
     }
-    h1::before {  
-  transform: scaleX(0);
-  transform-origin: bottom right;
+
+    body {
+    margin: 0;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 20px;}
+.w-100 {
+    width: 60%!important;
 }
 
-h1:hover::before {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+* {
+  box-sizing: border-box;
 }
-
-h1::before {
-  content: " ";
-  display: block;
-  opacity: 0.5;
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  inset: 0 0 0 0;
-  background: #4f75a1;
-  z-index: -1;
-  transition: transform .3s ease;
-}
-
-h1 {
-  position: relative;
-  font-size: 5rem;
-}
-
-/* html {
-  block-size: 100%;
-  inline-size: 100%;
-} */
 
 body {
-  min-block-size: 100%;
-  min-inline-size: 100%;
-  margin: 0;
-  box-sizing: border-box;
-  /* display: grid;
-  place-content: center; */
-  font-family: system-ui, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (orientation: landscape) {
-  body {
-    grid-auto-flow: column;
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 45%;
+  padding: 10px 10px 10px 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
   }
 }
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body { font-family: sans-serif; }
+
+.gallery {
+  background: #EEE;
+}
+
+.gallery-cell {
+  width: 66%;
+  height: 200px;
+  margin-right: 10px;
+  background: #8C8;
+  counter-increment: gallery-cell;
+}
+
+/* cell number */
+.gallery-cell:before {
+  display: block;
+  text-align: center;
+  content: counter(gallery-cell);
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+
+
+
+
+</style> 
+
   </style>
 
   <link rel="stylesheet" href="style1.css">
@@ -154,30 +196,50 @@ body {
   </nav>
   <!-- navbar end -->
 <br>
+<br>
+<br>
+
   <h1 style="font-family:Georgia, serif; text-align: center;">VOYAGE!!</h1>
   <hr style="width: 80%;height: 12px;">
+
+
   
-  <!-- <h1 style="text-align:center;">Implement World Map using jVectorMap</h1> -->
+  
+  
   <div id="vmap" style="margin:0 auto;width:80%;height:520px;"></div>
   <div id="chartContainer" style="height: 370px; width: 100%;"></div>
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<h2 style="font-family:Georgia, serif; text-align: center;">SOME OF THE BEST PLACES!!</h2> 
+<div class="row">
+  <div class="column">
+    <div class="card"><a href="url">NORTHERN LIGHTS</a></div>
+  </div>
+  <div class="column">
+    <div class="card"><a href="url">TOKYO</a></div>
+  </div>
+  <div class="column">
+    <div class="card"><a href="url">NIAGARA FALLS</a></div>
+  </div>
+  <div class="column">
+    <div class="card"><a href="url">NORTHERN LIGHTS</a></div>
+  </div>
+</div>
+    <br>
+    <br>
+    <br>  
+<h2 style="font-family:Georgia, serif; text-align: center;">"YOU WILL NEVER KNOW UNTIL YOU GO!!"</h2>
 </body>
 
 </html>
 
-<!-- Optional JavaScript; choose one of the two! -->
 
-<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
-<!-- Option 2: jQuery, Popper.js, and Bootstrap JS
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    -->
+<
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.world.js"></script>
