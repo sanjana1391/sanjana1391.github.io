@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Map</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<style>
+    .carousel-caption {
+    position: absolute;
+    right: 5%;
+    bottom: 20px;
+    left: 4%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: left;
+}
+body {
+    margin: 0;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 20px;}
+.w-100 {
+    width: 60%!important;
+}
+</style> 
+
+<link rel="stylesheet" href="style1.css">
+
+
+</head>
+  <body>
+  
+     <section class="navigation">
+  <div class="nav-container">
+    <div class="brand">
+      <a href="#!">Logo</a>
+    </div>
+    <nav>
+      <div class="nav-mobile"><a id="navbar-toggle" href="#!"><span></span></a></div>
+      <ul class="nav-list">
+        <li>
+          <a href="#!">Home</a>
+        </li>
+        <li>
+          <a href="#!">About</a>
+        </li>
+        <li>
+          <a href="#!">Services</a>
+          <ul class="navbar-dropdown">
+            <li>
+              <a href="#!">Sass</a>
+            </li>
+            <li>
+              <a href="#!">Less</a>
+            </li>
+            <li>
+              <a href="#!">Stylus</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#!">Portfolio</a>
+        </li>
+        <li>
+          <a href="#!">Category</a>
+          <ul class="navbar-dropdown">
+            <li>
+              <a href="#!">Sass</a>
+            </li>
+            <li>
+              <a href="#!">Less</a>
+            </li>
+            <li>
+              <a href="#!">Stylus</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#!">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</section>
+
+     
+         
+
+<!-- <p>This example displays a vertical translate button.</p> -->
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+      <!-- navbar end -->
+    <!-- <h1 style="text-align:center;">Implement World Map using jVectorMap</h1> -->
+    <div id="vmap" style="margin:0 auto;width:100%;height:520px;"></div>
+    <!-- <div class="card mb-3">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+        <img src="..." class="card-img-bottom" alt="...">
+      </div> -->
+
+      <!-- pie chart -->
+
+      
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function() {
+ 
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: "Impact of the Hour of Code!"
+	},
+	subtitles: [{
+		text: ""
+	}],
+	data: [{
+		type: "pie",
+		yValueFormatString: "#,##0.00\"%\"",
+		indexLabel: "{label} ({y})",
+		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+	}]
+});
+chart.render();
+ 
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html> 
+      <!-- <h1>OUR HIGHLIGHTS</h1>
+
+      <div id="carouselExampleCaptions ml-3" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="bg4.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Hour of code</h5>
+              <p>Learn today,</p>
+
+                <p>a brighter tomorrow.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="bg4.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second slide label</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="bg4.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div> -->
+
+      <!-- cards -->
+
+      <div class="container">
+  <div class="text-center">
+    <h1>Let's know more</h1>
+  </div>
+  <div class="container">
+    <div class="card-columns">
+      <div class="card">
+        <a href="#">
+        <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCaTBaMdwmMQ9y1IcqANb6NHqHM1pUPAdkDQ&usqp=CAU">
+        <div class="card-body">
+          <h5 class="card-title">What is Hour of Code?</h5>
+          <p class="card-text">
+          The Hour of Code is an attempt to teach people the basics of computer programming in 60 minutes in a fun, simple way. It is part of a campaign that Code.org, a non-profit organisation, launched in the US with the goal of introducing coding into the US curriculum and raising awareness around what coding is.
+          </p>
+          <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i>1000<i class="far fa-user"></i>admin<i class="fas fa-calendar-alt"></i>Jan 20, 2018</small></p>
+      </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="#">
+        <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLEul7Ln74hG3KBTiK88mlYb8ei07PtHN5BA&usqp=CAU" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">The Hour of Code Impact Study</h5>
+          <p class="card-text">We surveyed students on their attitudes and confidence towards computer science, both before they did an Hour of Code and directly after.
+
+At a high level, after just one Hour of Code:
+
+More students reported liking computer science
+More students reported feeling they are able to learn computer science, and
+More students reported feeling they are better at computer science than their peers 
+</p>
+          <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i>1000<i class="far fa-user"></i>admin<i class="fas fa-calendar-alt"></i>Jan 20, 2018</small></p>
+        </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="#">
+        <img class="card-img-top" src="https://i.pinimg.com/564x/72/20/e1/7220e1833793e4df6b63339c808667d4.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">What is Hop Scotch Coding.</h5>
+          <p class="card-text">Hop Scotch Coding provides a simple, interactive introduction to unplugged, block-style coding that is perfect for Kindergarten through third graders as they learn the basics of programming.</p>
+          <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i>1000<i class="far fa-user"></i>admin<i class="fas fa-calendar-alt"></i>Jan 20, 2018</small></p>
+        </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="#">
+        <img class="card-img-top" src="https://code.org/images/high-school-girls-like-CS.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Computer Science and Students.</h5>
+          <p class="card-text"> It is often assumed that it’s more difficult to change the minds of students as they get older; this suggests that students should be exposed to computer science at all grade levels.</p>
+          <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i>1000<i class="far fa-user"></i>admin<i class="fas fa-calendar-alt"></i>Jan 20, 2018</small></p>
+        </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="#">
+        <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA0qhmxNiDAv6pxnmRIvk9blXz5AELmn5tyg&usqp=CAU" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Benefits of Code Of Hour.</h5>
+          <p class="card-text">COMPUTER SCIENCE GIVES STUDENTS VITAL 21ST CENTURY SKILLS WORK. THESE SKILLS STRENGTHEN LOCAL COMMUNITIES, NATIONAL INNOVATION, AND OPPORTUNITIES FOR YOUTH. ... This ability to innovate with technology is also important for students' future success and ability to make a difference in a global society.</p>
+          <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i>1000<i class="far fa-user"></i>admin<i class="fas fa-calendar-alt"></i>Jan 20, 2018</small></p>
+        </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="#">
+        <img class="card-img-top" src="https://1.bp.blogspot.com/-Yr9QDwSr8LM/Wh67JDgAAJI/AAAAAAAAUM0/VFPj_s_3VUgnP-F0py_eOTrTcq11v1w5gCLcBGAs/s1600/Hour%2Bof%2BCode.png" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">What does hour of code teach you?</h5>
+          <p class="card-text">Somebody may learn programming concepts like loops, conditionals, or basic debugging through the Hour of Code. But a much more important goal is for students and teachers to learn that computer science is fun — you can start at any age, in any classroom, even if you don't have a computer.</p>
+          <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i>1000<i class="far fa-user"></i>admin<i class="fas fa-calendar-alt"></i>Jan 20, 2018</small></p>
+        </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
+body {
+  background: #232321;
+}
+h1 {
+  color: #fff;
+  padding: 10px 0;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border: none;
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+  }
+  a {
+    color: initial;
+    &:hover {
+      text-decoration: initial;
+    }
+  }
+  .text-muted i {
+    margin: 0 10px;
+  }
+} -->
+
+      <!-- <h1>Frequently Asked Questions</h1> -->
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    -->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.world.js"></script>
+    <script type="text/javascript">
+      var countries = '';
+      function getCountryData(){
+        $.ajax({
+          url:'countries.json',
+          type:'get',
+          success:function(res){
+            countries = JSON.parse(res);
+          }
+        });
+      }
+      getCountryData();
+      $(document).ready(function(){
+        $("#vmap").vectorMap({
+          map: 'world_en',
+          backgroundColor:'#222',
+          borderColor:'#555',
+          color:'#555',
+          hoverOpacity:0.7,
+          selectedColor:'#666666',
+          enableZoom:true,
+          enableDrag:true,
+          showTooltip:true,
+          normalizeFunction:'polynomial',
+          onLabelShow:function(event,label,code){
+            code = code.toUpperCase();
+            country_name = countries[code];
+            label.html('<strong>'+country_name+'</strong>');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
