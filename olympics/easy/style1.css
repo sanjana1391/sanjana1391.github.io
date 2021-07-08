@@ -6,7 +6,7 @@ body{
 }
  .navigation {
      height: 55px;
-     background: linear-gradient(45deg, #4199fe, #74b4fe);
+     background: linear-gradient(45deg,  #1e2023, #74b4fe);
 }
  .brand {
      position: absolute;
