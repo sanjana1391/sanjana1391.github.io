@@ -1,294 +1,1059 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nomad</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css">
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
 
-    <style>
-    h2{
-	align-items: center;
-     }
-body {
-    margin: 0;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 20px;}
-.w-100 {
-    width: 60%!important;
-}
+    body {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow-x: hidden;
+    }
 
-* {
-  box-sizing: border-box;
-}
+    #splash {
+      position: Absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url("https://scontent-atl3-1.xx.fbcdn.net/l/t31.0-8/12901002_503339689873508_8646270369817338592_o.jpg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: 50% 0;
+      z-index: -1;
+      background-color: black;
+    }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+    #splash h1 {
+      font-family: 'Metal Mania', Arial, serif;
+      font-weight: 400;
+      color: whitesmoke;
+      text-align: center;
+      padding-top: 350px;
+      font-size: 72px;
+      text-shadow: -2px 2px 2px black;
+    }
 
-/* Float four columns side by side */
-.column {
-  float: left;
-  width: 45%;
-  padding: 10px 10px 10px 10px;
-}
-
-/* Remove extra left and right margins, due to padding in columns */
-.row {margin: 0 -5px;}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Style the counter cards */
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-  padding: 16px;
-  text-align: center;
-  background-color: #f1f1f1;
-}
-
-/* Responsive columns - one column layout (vertical) on small screens */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
-}
-
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-body { font-family: sans-serif; }
-
-.gallery {
-  background: #EEE;
-}
-
-.gallery-cell {
-  width: 66%;
-  height: 200px;
-  margin-right: 10px;
-  background: #8C8;
-  counter-increment: gallery-cell;
-}
-
-/* cell number */
-.gallery-cell:before {
-  display: block;
-  text-align: center;
-  content: counter(gallery-cell);
-  line-height: 200px;
-  font-size: 80px;
-  color: white;
-}
+    #splash h1 blockquote {
+      font-size: 30px;
+      text-align: right;
+      padding-right: 15%;
+    }
 
 
+    /*
+ * Site Navigation
+ */
+
+    #bodyContent {
+      display: block;
+      width: 100vw;
+      height: auto;
+    }
+
+    .nav {
+      height: 50px;
+      line-height: 50px;
+      width: 100vw;
+      background: rgba(34, 34, 34, 1);
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+
+    .nav img {
+      max-height: 50px;
+    }
+
+    .nav input[type="radio"] {
+      position: fixed;
+      top: -9999%;
+      left: -9999%;
+    }
+
+    .nav>label {
+      display: block;
+      width: 150px;
+      height: inherit;
+      line-height: inherit;
+      cursor: pointer;
+      text-align: center;
+      margin: 0 1% 0 1%;
+      position: relative;
+      color: white;
+      overflow: hidden;
+      font-family: 'Roboto Condensed', serif;
+      font-size: 18px;
+      letter-spacing: .25px;
+    }
+
+    .nav>label:first-of-type {
+      margin-left: 100px;
+    }
+
+    .nav label:hover {
+      color: white;
+    }
+
+    .nav label::before {
+      font-size: 24px;
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: Absolute;
+      background: rgba(51, 51, 51, 1);
+      z-index: 5;
+      bottom: -50px;
+      transition: all .3s ease;
+      text-shadow: 2px 2px 5px black;
+      font-family: 'FontAwesome';
+      line-height: 50px;
+    }
+
+    .nav label:hover::before {
+      bottom: 0;
+    }
+
+    .nav input[type="radio"]:checked+label:before {
+      bottom: 0 !important;
+    }
 
 
-
-</style> 
-
-<link rel="stylesheet" href="style1.css">
-
-
-</head>
-  <body>
-  
-     <section class="navigation">
-  <div class="nav-container">
-    <div class="brand">
-      <a href="#!">Logo</a>
-    </div>
-    <nav>
-      <div class="nav-mobile"><a id="navbar-toggle" href="#!"><span></span></a></div>
-      <ul class="nav-list">
-        <li>
-          <a href="#!">Home</a>
-        </li>
-        <li>
-          <a href="#!">About</a>
-        </li>
-        <li>
-          <a href="#!">Places</a>
-          <ul class="navbar-dropdown">
-            <li>
-              <a href="#!">Sass</a>
-            </li>
-            <li>
-              <a href="#!">Less</a>
-            </li>
-            <li>
-              <a href="#!">Stylus</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#!">Explore :</a>
-        </li>
-        <li>
-          <a href="#!">Category</a>
-          <ul class="navbar-dropdown">
-            <li>
-              <a href="#!">Sass</a>
-            </li>
-            <li>
-              <a href="#!">Less</a>
-            </li>
-            <li>
-              <a href="#!">Stylus</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#!">Contact</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</section>
+    /*
+ * END Site Navigation **
+ */
 
 
+    /*
+ * Social Media Gooey Navigation
+ */
 
-     
-         
+    .socialMediaNav {
+      height: 110px;
+      margin: 20px;
+      position: absolute;
+      filter: url("#gooey");
+      -webkit-filter: url("#gooey");
+      width: 300px;
+      right: 0;
+      top: 0;
+      z-index: 1031;
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+
+    .nav-toggle-button {
+      z-index: 10;
+    }
+
+    .nav-toggle-button:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+    }
+
+    .nav-toggle-button,
+    .nav-item {
+      background-color: whitesmoke;
+      border-radius: 50%;
+      height: 70px;
+      line-height: 70px;
+      position: absolute;
+      transition: all 1s ease;
+      width: 70px;
+      right: 0;
+    }
+
+    .nav-item {
+      transform: translateX(0px);
+      -webkit-transform: translateX(0px);
+      transition: transform cubic-bezier(1, -0.3, 0.35, 1.335);
+      -webkit-transition: transform cubic-bezier(1, -0.3, 0.35, 1.335);
+    }
+
+    .nav-item:first-of-type {
+      transition-duration: 0.5s;
+      -webkit-transition-duration: 0.5s;
+      z-index: 9;
+    }
+
+    .nav-item:nth-of-type(2) {
+      transition-duration: 0.75s;
+      -webkit-transition-duration: 0.75s;
+      z-index: 8;
+    }
+
+    .nav-item:nth-of-type(3) {
+      transition-duration: 1s;
+      -webkit-transition-duration: 1s;
+      z-index: 7;
+    }
+
+    .nav-icon {
+      transition: all 0.25s;
+      -webkit-transition: all 0.25s;
+      width: inherit;
+      font-size: 26px !important;
+      line-height: 70px;
+      margin: auto;
+      text-align: center;
+      border-radius: 50%;
+      height: inherit;
+      position: absolute;
+      line-height: 70px !important;
+    }
+
+    .fa-facebook {
+      color: #4060A5;
+    }
+
+    .fa-facebook:hover {
+      background: #4060A5;
+      color: white;
+    }
+
+    .fa-twitter {
+      color: #00ABE3;
+    }
+
+    .fa-twitter:hover {
+      background: #00ABE3;
+      color: white;
+    }
+
+    .fa-youtube {
+      color: #b31217;
+    }
+
+    .fa-youtube:hover {
+      background: #b31217;
+      color: white;
+    }
+
+    .hamburger {
+      width: 20px;
+      height: 2px;
+      background: black;
+      background-image: none;
+      display: block;
+      left: 50%;
+      margin: -1px 0 0 -10px;
+      opacity: 1;
+      position: absolute;
+      top: 50%;
+      transition: all 0.25s;
+      -webkit-transition: all 0.25s;
+    }
+
+    .hb1 {
+      transform: translateY(-8px);
+      -webkit-transform: translateY(-8px);
+    }
+
+    .hb3 {
+      transform: translateY(8px);
+      -webkit-transform: translateY(8px);
+    }
+
+    .nav-toggle:checked+.nav-toggle-button {
+      transform: scale(0.85);
+      -webkit-transform: scale(0.85);
+    }
+
+    .nav-toggle:checked+.nav-toggle-button .hb1 {
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+    }
+
+    .nav-toggle:checked+.nav-toggle-button .hb2 {
+      opacity: 0;
+    }
+
+    .nav-toggle:checked+.nav-toggle-button .hb3 {
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+    }
+
+    .nav-toggle:checked~.nav-item:first-of-type {
+      transform: translateX(-70px);
+      -webkit-transform: translateX(-70px);
+    }
+
+    .nav-toggle:checked~.nav-item:nth-of-type(2) {
+      transform: translateX(-145px);
+      -webkit-transform: translateX(-145px);
+    }
+
+    .nav-toggle:checked~.nav-item:nth-of-type(3) {
+      transform: translateX(-220px);
+      -webkit-transform: translateX(-220px);
+    }
 
 
-      </nav>
-      <!-- navbar end -->
-
-      <h1>VOYAGE!!</h1>
-      <br>
-      <br>
-    
-    <div id="vmap" style="margin:0 auto;width:100%;height:520px;"></div>
- <br>
- <br>
- <br>
- <br>
- <br> 
-<h2>SOME OF THE BEST PLACES!!</h2> 
-<div class="row">
-  <div class="column">
-    <div class="card">..</div>
-  </div>
-  <div class="column">
-    <div class="card">..</div>
-  </div>
-  <div class="column">
-    <div class="card">..</div>
-  </div>
-  <div class="column">
-    <div class="card">..</div>
-  </div>
-</div>
-    <br>
-    <br>
-    <br>  
-<h2>"YOU WILL NEVER KNOW UNTIL YOU GO!!"</h2>
+    /*
+ * END Social Media Gooey Navigation **
+ */
 
 
+    /*
+ *  Content Views
+ */
 
 
-<script>
-window.onload = function() {
- 
- 
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	title: {
-		text: "Journey"
-	},
-	subtitles: [{
-		text: ""
-	}],
-	data: [{
-		type: "pie",
-		yValueFormatString: "#,##0.00\"%\"",
-		indexLabel: "{label} ({y})",
-		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
-	}]
-});
-chart.render();
- 
-}
-</script>
-</head>
-<body>
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-</body>
-</html> 
-     
+    /*This is used to trick the fact you can't transition from display:none to display:block*/
 
-      
-
-
-      <!-- <h1>Frequently Asked Questions</h1> -->
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-
-    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    -->
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.world.js"></script>
-    <script type="text/javascript">
-      var countries = '';
-      function getCountryData(){
-        $.ajax({
-          url:'countries.json',
-          type:'get',
-          success:function(res){
-            countries = JSON.parse(res);
-          }
-        });
+    @-webkit-keyframes fadeIn {
+      from {
+        opacity: 0;
       }
-      getCountryData();
-      $(document).ready(function(){
-        $("#vmap").vectorMap({
-          map: 'world_en',
-          backgroundColor:'#222',
-          borderColor:'#555',
-          color:'#555',
-          hoverOpacity:0.7,
-          selectedColor:'#666666',
-          enableZoom:true,
-          enableDrag:true,
-          showTooltip:true,
-          normalizeFunction:'polynomial',
-          onLabelShow:function(event,label,code){
-            code = code.toUpperCase();
-            country_name = countries[code];
-            label.html('<strong>'+country_name+'</strong>');
-          }
-        });
-      });
 
-      
-    </script>
-  </body>
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .nav input[type="radio"]:checked~#splash {
+      display: none;
+    }
+
+    .contentView {
+      opacity: 0;
+      display: none;
+      z-index: -1030;
+      width: 100vw;
+      min-height: 100vh;
+      position: absolute;
+      top: 50px;
+      left: 0;
+      transition: opacity 1s ease, z-index 1s ease;
+    }
+
+    .nav input[type="radio"]:checked+label+div.contentView {
+      opacity: 1;
+      z-index: 1030;
+      display: block;
+      -webkit-animation: fadeIn 1s;
+      animation: fadeIn 1s;
+    }
+
+
+    /*Static Background colors for dev purposes*/
+
+    .contentView:first-of-type {}
+
+    /*
+ *  Shows Page Content View
+ */
+
+    .contentView>.parallax {
+      position: absolute;
+      top: 10px;
+      left: 10%;
+      width: 80%;
+      height: 70vh;
+      background-image: url(" https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/13083290_513203515553792_3509783052595061360_n.jpg?oh=74df51444bf976f6f91a7cc04de6786e&oe=580E7A5F");
+      background-attachment: fixed;
+      background-position: 50% 0;
+      background-repeat: no-repeat;
+    }
+
+    .contentView>.parallax+.viewingContent {
+      width: 90%;
+      margin: auto;
+      margin-top: 75vh;
+      line-height: 26px;
+    }
+
+    .contentView>.parallax+.viewingContent>h3 {
+      text-align: Center;
+      font-size: 48px;
+      padding: 20px;
+      border-bottom: 2px solid black;
+      text-shadow: -2px 2px 2px rgba(51, 51, 51, .5);
+      font-family: 'Metal Mania', Arial, serif;
+      font-weight: 400;
+    }
+
+    .contentView>.parallax+.viewingContent>.showBox {
+      width: 80%;
+      height: 250px;
+      border-bottom: 1px solid grey;
+      margin: 1% auto 1% auto;
+      padding: 1% 0 1% 0;
+      position: relative;
+    }
+
+    .showBox>.showBoxHeading {
+      width: 50%;
+      height: 20%;
+      line-height: 200px;
+      text-align: Center;
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+      text-transform: uppercase;
+    }
+
+    .showBox>.showBoxHeading>p {
+      height: 100%;
+      width: 100%;
+      line-height: 50px;
+    }
+
+    .showBox>.showBoxImageContainer {
+      width: 50%;
+      height: 80%;
+      border-right: 1px solid black;
+      position: relative;
+    }
+
+    .showBox>.showBoxImageContainer>label {
+      width: 55%;
+      height: 100%;
+      display: block;
+      opacity: .9;
+      position: Absolute;
+      z-index: 2;
+      cursor: zoom-in;
+    }
+
+    .showBox>.showBoxImageContainer>.showBoxImage {
+      display: block;
+      max-width: 50%;
+      max-height: 100%;
+      margin: 1%;
+      margin: auto;
+      position: relative;
+      z-index: 1;
+      transition: all .3s ease;
+      cursor: zoom-in;
+      box-shadow: none;
+    }
+
+    .showBox>.showBoxImageContainer>input[type="radio"]:checked+label+.showBoxImage {
+      position: fixed;
+      top: -25%;
+      left: -10%;
+      width: 30%;
+      height: 75%;
+      z-index: 9999;
+      background: rgba(51, 51, 51, .8);
+      transform: translate(200%, 50%);
+      box-shadow: 0 5px 5px -1px black;
+      -webkit-animation: fadeIn 1s;
+      animation: fadeIn 1s
+    }
+
+    label[for="removeImage"] {
+      z-index: 9999;
+      font-size: 48px;
+      position: fixed;
+      color: White;
+      text-shadow: 2px -2px 5px black;
+      cursor: pointer;
+      top: 10%;
+      right: 10%;
+      transition: color .3s ease;
+    }
+
+    label[for="removeImage"]:hover {
+      color: Red;
+    }
+
+    #bodyOverlay {
+
+      position: Fixed;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(51, 51, 51, .9);
+      z-index: 1030;
+    }
+
+    #removeImage,
+    input#removeImage:checked+label,
+    input#removeImage:checked+label+#bodyOverlay {
+      position: Fixed;
+      top: -9999%;
+      left: -9999%;
+    }
+
+    .showBox>.showBoxText {
+      display: block;
+      width: 50%;
+      height: 100%;
+      position: Absolute;
+      right: 0;
+      top: 0;
+      font-size: 30px;
+      line-height: 36px;
+    }
+
+    .showBox>.showBoxText>p {
+      text-align: Center;
+      padding: 15px;
+    }
+
+    /*Directions Content View*/
+    .contentView:nth-of-type(3n+2) {}
+
+    .contentView:nth-of-type(3n+2) #directions {
+      width: 80%;
+      margin: auto;
+      padding-bottom: 5%;
+      display: flex;
+      justify-content: space-around;
+      flex-flow: row wrap;
+      box-shadow: 0 0 10px black;
+    }
+
+    .contentView:nth-of-type(3n+2) h3 {
+      text-align: Center;
+      padding: 55px;
+      font-size: 48px;
+      font-family: 'Metal Mania';
+    }
+
+    .contentView:nth-of-type(3n+2) h3 a {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      text-shadow: 2px 2px 5px #777;
+      transition: color .3s ease, text-shadow .3s ease;
+    }
+
+    .contentView:nth-of-type(3n+2) h3 a:hover {
+
+      color: #DDDCC5;
+    }
+
+    .contentView:nth-of-type(3n+2) a {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      font-size: 36px;
+      border-radius: 5px;
+    }
+
+    .contentView:nth-of-type(3n+2) li a {
+
+      padding: 15px;
+      line-height: 20px;
+      box-shadow: 2px 1px 2px #777;
+      background: rgba(51, 51, 51, 1);
+      color: #DDDCC5;
+    }
+
+    .contentView:nth-of-type(3n+2) ul {
+      width: 50%;
+      line-height: 40px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contentView:nth-of-type(3n+2) ul li {
+
+      display: inline-table;
+      width: auto;
+      margin: auto;
+      border-bottom: 1px solid #999;
+    }
+
+    .contentView:nth-of-type(3n+2) ul li:first-of-type {
+      border-bottom: none;
+    }
+
+    .contentView:nth-of-type(3n+2) iframe#directionMap {
+
+      display: block;
+    }
+
+    /*Contact Content View*/
+    .contentView:nth-of-type(3n+3) {}
+
+
+    @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+    .formContainer div,
+    .formContainer textarea,
+    .formContainer input {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .formContainer {
+      max-width: 510px;
+      min-width: 324px;
+      margin: 50px auto 0px;
+      background-color: rgba(220, 238, 242, .3);
+      border: 1px solid #cfcfcf;
+      border-bottom: 3px solid #ccc;
+      font-size: 100%;
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+    }
+
+    .row {
+      width: 100%;
+      margin: 0 0 1em 0;
+      padding: 0 2.5em;
+    }
+
+    .row.header {
+      padding: 1.5em 2.5em;
+      border-bottom: 1px solid #ccc;
+      background: url(https://scontent-atl3-1.xx.fbcdn.net/l/t31.0-8/12901002_503339689873508_8646270369817338592_o.jpg) left -80px;
+      color: #fff;
+    }
+
+    .row.body {
+      padding: .5em 2.5em 1em;
+    }
+
+    .formContainer h1 {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      display: inline-block;
+      font-weight: 100;
+      font-size: 2.8125em;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      margin: 0 0 0.1em 0;
+      padding: 0 0 0.4em 0;
+      text-shadow: -1px 1px 5px #611427;
+      color: Whitesmoke;
+    }
+
+    .formContainer h3 {
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      font-size: 1.25em;
+      margin: 1.45em 0 0 0;
+      text-shadow: -1px 1px 5px #611427;
+      color: Whitesmoke;
+    }
+
+    .formContainer .btn {
+      font-size: 1.0625em;
+      display: inline-block;
+      padding: 0.74em 1.5em;
+      margin: 1.5em 0 0;
+      color: #fff;
+      border-width: 0 0 0 0;
+      border-bottom: 5px solid;
+      text-transform: uppercase;
+      background-color: #b3b3b3;
+      border-bottom-color: #8c8c8c;
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      cursor: pointer;
+      transition: color .2s ease;
+    }
+
+    .formContainer .btn:hover {
+      background-color: #bfbfbf;
+    }
+
+    .formContainer .btn.btn-submit {
+      background-color: #023747;
+      border-bottom-color: #327373;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .formContainer .btn.btn-submit::before {
+      background-color: #023747;
+      font-family: "FontAwesome";
+      position: Absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: -100%;
+      font-size: 24px;
+      line-height: 45px;
+      transition: all .3s ease;
+      color: rgba(220, 238, 242, 1);
+    }
+
+    .formContainer .btn.btn-submit:hover {
+      color: transparent;
+    }
+
+    .formContainer .btn.btn-submit:hover::before {
+      z-index: 1;
+      left: 0;
+    }
+
+    .formContainer form {
+      max-width: 100%;
+      display: block;
+    }
+
+    .formContainer form ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+    }
+
+    .formContainer form ul li {
+      margin: 0 0 0.25em 0;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .formContainer form ul li:first-of-type {
+
+      display: flex;
+      flex-flow: no wrap;
+      justify-content: space-between;
+    }
+
+
+    .formContainer form ul li:last-child {
+      margin: 0;
+      position: relative;
+    }
+
+    .formContainer form ul li p {
+      margin: 0;
+      padding: 0;
+      width: 49%;
+    }
+
+    .formContainer form ul li:nth-of-type(3n+2) p {
+      width: 100%;
+    }
+
+    .formContainer form ul li .divider {
+      margin: 0.5em 0 0.5em 0;
+      border: 0;
+      height: 1px;
+      width: 100%;
+      display: block;
+      background-color: #4f6fad;
+      background-image: linear-gradient(to right, #ee9cb4, #4f6fad);
+    }
+
+    .formContainer form ul li .req {
+      color: #ee9cb4;
+    }
+
+    .formContainer form label {
+      display: block;
+      font-size: 1em;
+    }
+
+    .formContainer form input,
+    .formContainer form button {
+      margin: 0 0 0.5em 0;
+      border: 1px solid #ccc;
+      padding: 6px 8px;
+      color: #555;
+      font-size: 1em;
+      width: 100%;
+    }
+
+    .formContainer form textarea {
+      border: 1px solid #ccc;
+      padding: 6px 10px;
+      width: 100%;
+      color: #555;
+      resize: none;
+      height: 150px;
+    }
+
+    @media only screen and (max-width: 510px) {
+
+      .formContainer ul li {
+
+        flex-direction: column;
+        flex-flow: no wrap;
+        justify-content: center;
+      }
+
+      .formContainer label {
+        width: 100%;
+        display: inline-block;
+      }
+
+      .formContainer li,
+      .formContainer p {
+        width: 100% !important;
+      }
+
+      .formContainer input.btn {
+        margin: 1.5em 0 0.5em;
+      }
+
+      .formContainer h1 {
+        font-size: 2.25em;
+      }
+
+      .formContainer h3 {
+        font-size: 1.125em;
+      }
+    }
+
+    /*About Content View*/
+    .contentView:nth-of-type(3n+4) {}
+
+    .contentView:nth-of-type(3n+4)>p {
+
+      width: 80%;
+      text-align: justify;
+      margin: auto;
+      font-size: 36px;
+      padding: 20px;
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <section id="bodyContent">
+
+    <!--Used to close images -->
+    <input type="radio" name="blowUpImageRadio" id="removeImage" checked="checked" />
+    <label class="fa fa-close" for="removeImage"></label>
+    <!--END Used to close images -->
+
+    <!--Body overlay to disable background of pop out content -->
+    <div id="bodyOverlay"></div>
+
+    <!-- NAV HOLDS ALL PAGES -->
+    <nav class="nav">
+      <!--ONE-->
+      <input type="radio" id="shows" name="navToggle" />
+      <label for="shows" class="fa fa-headphones">Shows</label>
+      <div class="contentView">
+        <div class="parallax" data-velocity="-.1"></div>
+        <div class="viewingContent">
+          <h3>The Iron Heights</h3>
+
+          <!--1st Demo Display Box -->
+          <div class="showBox">
+            <section class="showBoxHeading">
+              <p>SAT JUNE 4, 2016 - 7:00 PM</p>
+            </section>
+            <section class="showBoxImageContainer">
+              <input type="radio" name="blowUpImageRadio" id="1A" />
+              <label for="1A"></label>
+              <img src="https://s3.amazonaws.com/bit-photos/large/6403736.jpeg" class="showBoxImage" />
+            </section>
+
+            <section class="showBoxText">
+              <p>
+                INVOKING THE ABSTRACT Verified-artist-flat with:Trees on Mars The Iron Heights 631 Ellis St Augusta, GA
+              </p>
+            </section>
+          </div>
+          <!--2nd Demo Display Box -->
+          <div class="showBox">
+            <section class="showBoxHeading">
+              <p>SAT JUNE 25, 2016 - 8:00 PM</p>
+            </section>
+            <section class="showBoxImageContainer">
+              <input type="radio" name="blowUpImageRadio" id="1B" />
+              <label for="1B"></label>
+              <img src="https://s3.amazonaws.com/bit-photos/large/6477590.jpeg" class="showBoxImage" />
+
+            </section>
+
+            <section class="showBoxText">
+              <p>
+                Bullmoose with:Dylan Micheal and the Family,The New Clear Lawn Chairs</p>
+            </section>
+          </div>
+          <!--3rd Demo Display Box -->
+          <div class="showBox">
+            <section class="showBoxHeading">
+              <p>FRI JUNE 24, 2016 - 5:00 PM</p>
+            </section>
+            <section class="showBoxImageContainer">
+              <input type="radio" name="blowUpImageRadio" id="1C" />
+              <label for="1C"></label>
+              <img src="https://s3.amazonaws.com/bit-photos/large/6446614.jpeg" class="showBoxImage" />
+
+            </section>
+
+            <section class="showBoxText">
+              <p>
+                Jynx Verified-artist-flat with:Trace Your Steps,apnea</p>
+            </section>
+          </div>
+        </div>
+      </div>
+
+
+      </div>
+
+      <!--TWO-->
+      <input type="radio" id="directions" name="navToggle" />
+      <label for="directions" class="fa fa-map-marker">Directions</label>
+      <div class="contentView">
+        <div id="directions">
+          <h3><a
+              href="https://www.google.com/maps/place/Iron+Heights/@33.471164,-81.965985,15z/data=!4m5!3m4!1s0x0:0x779992405b164111!8m2!3d33.4736695!4d-81.9633886?hl=en-US"
+              target="_Blank" title="Click To View Map Full Screen">
+              Iron Heights, 631 Ellis St, Augusta, GA 30901</a>
+          </h3>
+
+          <iframe id="directionMap"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.0645760289826!2d-81.96557728480003!3d33.473669480767356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f9cc721a03f9ff%3A0x779992405b164111!2sIron+Heights!5e0!3m2!1sen!2sus!4v1465233429457"
+            width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+          <ul>
+            <li>
+              <a href="tel:706-831-1845" class="fa fa-phone-square"></a>
+            </li>
+            <li>Directions beginning from 5th St Bridge Augusta, GA 30901</li>
+            <li>Head southwest on 5th St Bridge 79 ft</li>
+            <li>Continue onto 5th St 387 ft</li>
+            <li>Turn right onto Reynolds St 0.2 mi</li>
+            <li>Turn left onto 6th St 0.2 mi</li>
+            <li>Turn right onto Ellis St Destination will be on the right 443 ft</li>
+            <li></li>
+
+          </ul>
+        </div>
+      </div>
+
+      <!--THREE-->
+      <input type="radio" id="contact" name="navToggle" />
+      <label for="contact" class="fa fa-envelope">Contact</label>
+      <div class="contentView">
+
+        <div class="formContainer">
+          <div class="row header">
+            <h1>CONTACT US &nbsp;</h1>
+            <h3>Bookings Information? &nbsp;Ticket Prices? &nbsp;Just ask!</h3>
+          </div>
+          <div class="row body" onsubmit="return false;">
+            <form action="#">
+              <ul>
+
+                <li>
+                  <p class="left">
+                    <label for="name">name</label>
+                    <input type="text" name="name" placeholder="Kurt Russell" />
+                  </p>
+                  <p class="pull-right">
+                    <label for="phone">phone</label>
+                    <input type="text" name="phone" placeholder="xxx-xxx-xxxx" />
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    <label for="email">e-mail <span class="req">*</span></label>
+                    <input type="email" name="email" placeholder="kurt.russell@gmail.com" />
+                  </p>
+                </li>
+                <li>
+                  <div class="divider"></div>
+                </li>
+                <li>
+                  <label for="comments">comments</label>
+                  <textarea cols="46" rows="3" name="comments"></textarea>
+                </li>
+
+                <li>
+                  <button class="btn btn-submit fa fa-envelope" type="submit" value="Submit">Submit</button>
+                </li>
+
+              </ul>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+      <!--FOUR-->
+      <input type="radio" id="about" name="navToggle" />
+      <label for="about" class="fa fa-question-circle">About</label>
+      <div class="contentView">
+        <p>We are an all ages music venue in Augusta GA. Message us for venue rental rates, or show inquiries. Email
+          theironheights@gmail.com</p>
+
+      </div>
+
+
+      <div id="splash">
+        <!--<h1>The Iron Heights
+          <blockquote>Augusta Ga</blockquote>
+        </h1>-->
+      </div>
+    </nav>
+    <!--End Site Nav -->
+
+    <!-- Gooey Social Media Nav, based on concept by Sean Free
+       www.seanalexanderfree.com -->
+    <nav class="socialMediaNav">
+      <input type="checkbox" class="nav-toggle" name="nav-toggle" id="nav-toggle" />
+
+      <label class="nav-toggle-button" for="nav-toggle">
+        <span class="hamburger hb1"></span>
+        <span class="hamburger hb2"></span>
+        <span class="hamburger hb3"></span>
+      </label>
+
+      <a href="https://www.facebook.com/TheIronHeightsAUG/" class="nav-item" target="_Blank">
+        <span class="nav-icon fa fa-facebook"></span>
+      </a>
+
+      <a href="https://twitter.com/ironheightsaug" class="nav-item" target="_blank">
+        <span class="nav-icon fa fa-twitter"></span>
+      </a>
+
+      <a href="#" class="nav-item">
+        <span class="nav-icon fa fa-youtube"></span>
+      </a>
+    </nav>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <defs>
+        <filter id="gooey">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -9" result="goo" />
+          <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+        </filter>
+      </defs>
+    </svg>
+    <!--End Social Media Nav -->
+
+
+  </section>
+</body>
+
 </html>
