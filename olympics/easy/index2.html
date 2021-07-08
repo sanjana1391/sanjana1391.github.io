@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nomad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+    h2{
+	align-items: center;
+     }
+body {
+    margin: 0;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 20px;}
+.w-100 {
+    width: 60%!important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 45%;
+  padding: 10px 10px 10px 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body { font-family: sans-serif; }
+
+.gallery {
+  background: #EEE;
+}
+
+.gallery-cell {
+  width: 66%;
+  height: 200px;
+  margin-right: 10px;
+  background: #8C8;
+  counter-increment: gallery-cell;
+}
+
+/* cell number */
+.gallery-cell:before {
+  display: block;
+  text-align: center;
+  content: counter(gallery-cell);
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+
+
+
+
+</style> 
+
+<link rel="stylesheet" href="style1.css">
+
+
+</head>
+  <body>
+  
+     <section class="navigation">
+  <div class="nav-container">
+    <div class="brand">
+      <a href="#!">Logo</a>
+    </div>
+    <nav>
+      <div class="nav-mobile"><a id="navbar-toggle" href="#!"><span></span></a></div>
+      <ul class="nav-list">
+        <li>
+          <a href="#!">Home</a>
+        </li>
+        <li>
+          <a href="#!">About</a>
+        </li>
+        <li>
+          <a href="#!">Places</a>
+          <ul class="navbar-dropdown">
+            <li>
+              <a href="#!">Sass</a>
+            </li>
+            <li>
+              <a href="#!">Less</a>
+            </li>
+            <li>
+              <a href="#!">Stylus</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#!">Explore :</a>
+        </li>
+        <li>
+          <a href="#!">Category</a>
+          <ul class="navbar-dropdown">
+            <li>
+              <a href="#!">Sass</a>
+            </li>
+            <li>
+              <a href="#!">Less</a>
+            </li>
+            <li>
+              <a href="#!">Stylus</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#!">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</section>
+
+
+
+     
+         
+
+
+      </nav>
+      <!-- navbar end -->
+
+      <h1>VOYAGE!!</h1>
+      <br>
+      <br>
+    
+    <div id="vmap" style="margin:0 auto;width:100%;height:520px;"></div>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br> 
+<h2>SOME OF THE BEST PLACES!!</h2> 
+<div class="row">
+  <div class="column">
+    <div class="card">..</div>
+  </div>
+  <div class="column">
+    <div class="card">..</div>
+  </div>
+  <div class="column">
+    <div class="card">..</div>
+  </div>
+  <div class="column">
+    <div class="card">..</div>
+  </div>
+</div>
+    <br>
+    <br>
+    <br>  
+<h2>"YOU WILL NEVER KNOW UNTIL YOU GO!!"</h2>
+
+
+
+
+<script>
+window.onload = function() {
+ 
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: "Journey"
+	},
+	subtitles: [{
+		text: ""
+	}],
+	data: [{
+		type: "pie",
+		yValueFormatString: "#,##0.00\"%\"",
+		indexLabel: "{label} ({y})",
+		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+	}]
+});
+chart.render();
+ 
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html> 
+     
+
+      
+
+
+      <!-- <h1>Frequently Asked Questions</h1> -->
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    -->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.world.js"></script>
+    <script type="text/javascript">
+      var countries = '';
+      function getCountryData(){
+        $.ajax({
+          url:'countries.json',
+          type:'get',
+          success:function(res){
+            countries = JSON.parse(res);
+          }
+        });
+      }
+      getCountryData();
+      $(document).ready(function(){
+        $("#vmap").vectorMap({
+          map: 'world_en',
+          backgroundColor:'#222',
+          borderColor:'#555',
+          color:'#555',
+          hoverOpacity:0.7,
+          selectedColor:'#666666',
+          enableZoom:true,
+          enableDrag:true,
+          showTooltip:true,
+          normalizeFunction:'polynomial',
+          onLabelShow:function(event,label,code){
+            code = code.toUpperCase();
+            country_name = countries[code];
+            label.html('<strong>'+country_name+'</strong>');
+          }
+        });
+      });
+
+      
+    </script>
+  </body>
+</html>
