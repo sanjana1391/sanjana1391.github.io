@@ -1,0 +1,886 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Profile &mdash; Sanjana Jain</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
+	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	<meta name="author" content="freehtml5.co" />
+
+	<!-- 
+	//////////////////////////////////////////////////////
+
+	//////////////////////////////////////////////////////
+	 -->
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+	<body>
+		
+	<div class="fh5co-loader"></div>
+	
+	<div id="page">	
+	<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image:url(images/cover_bg_3.jpg);" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t js-fullheight">
+						<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+							<div class="profile-thumb" style="background: url(images/user-3.jpeg);"></div>
+							<h1><span>Sanjana Jain</span></h1>
+							<br>
+							<canvas id="myCanvas"></canvas>
+							<script>
+								var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+var mask;
+
+var pointCount = 300;
+var str = "Hello";
+var fontStr = "bold 80pt Helvetica Neue, Helvetica, Arial, sans-serif, white";
+
+ctx.font = fontStr;
+ctx.textAlign = "center";
+c.width = ctx.measureText(str).width;
+c.height = 75; // Set to font size
+
+var whitePixels = [];
+var points = [];
+var point = function(x,y,vx,vy){
+  this.x = x;
+  this.y = y;
+  this.vx = vx || 1;
+  this.vy = vy || 1;
+}
+point.prototype.update = function() {
+  ctx.beginPath();
+  ctx.fillStyle = "#95a5a6";
+  ctx.arc(this.x,this.y,1,0,2*Math.PI);
+  ctx.fill();
+  ctx.closePath();
+  
+  // Change direction if running into black pixel
+  if (this.x+this.vx >= c.width || this.x+this.vx < 0 || mask.data[coordsToI(this.x+this.vx, this.y, mask.width)] != 255) {
+    this.vx *= -1;
+    this.x += this.vx*2;
+  }
+  if (this.y+this.vy >= c.height || this.y+this.vy < 0 || mask.data[coordsToI(this.x, this.y+this.vy, mask.width)] != 255) {
+    this.vy *= -1;
+    this.y += this.vy*2;
+  }
+  
+  for (var k = 0, m = points.length; k<m; k++) {
+    if (points[k]===this) continue;
+    
+    var d = Math.sqrt(Math.pow(this.x-points[k].x,2)+Math.pow(this.y-points[k].y,2));
+    if (d < 5) {
+      ctx.lineWidth = .2;
+      ctx.beginPath();
+      ctx.moveTo(this.x,this.y);
+      ctx.lineTo(points[k].x,points[k].y);
+      ctx.stroke();
+    }
+    if (d < 20) {
+      ctx.lineWidth = .1;
+      ctx.beginPath();
+      ctx.moveTo(this.x,this.y);
+      ctx.lineTo(points[k].x,points[k].y);
+      ctx.stroke();
+    }
+  }
+  
+  this.x += this.vx;
+  this.y += this.vy;
+}
+
+function loop() {
+  ctx.clearRect(0,0,c.width,c.height);
+  for (var k = 0, m = points.length; k < m; k++) {
+    points[k].update();
+  }
+}
+
+function init() {
+  // Draw text
+  ctx.beginPath();
+  ctx.fillStyle = "#000";
+  ctx.rect(0,0,c.width,c.height);
+  ctx.fill();
+  ctx.font = fontStr;
+  ctx.textAlign = "left";
+  ctx.fillStyle = "#fff";
+  ctx.fillText(str,0,c.height/2+(c.height / 2));
+  ctx.closePath();
+  
+  // Save mask
+  mask = ctx.getImageData(0,0,c.width,c.height);
+  
+  // Draw background
+  ctx.clearRect(0,0,c.width,c.height);
+  
+  // Save all white pixels in an array
+  for (var i = 0; i < mask.data.length; i += 4) {
+    if (mask.data[i] == 255 && mask.data[i+1] == 255 && mask.data[i+2] == 255 && mask.data[i+3] == 255) {
+      whitePixels.push([iToX(i,mask.width),iToY(i,mask.width)]);
+    }
+  }
+  
+  for (var k = 0; k < pointCount; k++) {
+    addPoint();
+  }
+}
+
+function addPoint() {
+  var spawn = whitePixels[Math.floor(Math.random()*whitePixels.length)];
+  
+  var p = new point(spawn[0],spawn[1], Math.floor(Math.random()*2-1), Math.floor(Math.random()*2-1));
+  points.push(p);
+}
+
+function iToX(i,w) {
+  return ((i%(4*w))/4);
+}
+function iToY(i,w) {
+  return (Math.floor(i/(4*w)));
+}
+function coordsToI(x,y,w) {
+  return ((mask.width*y)+x)*4;
+
+}
+
+setInterval(loop,35);
+init();
+							</script>
+							<br>
+							<!-- <h1><span>Sanjana Jain</span></h1> -->
+							<br>
+							<h3><p class="line-1 anim-typewriter">Software Developer|Data Scientist | Web Developer </p></h3>
+							
+							<!-- <h3><span>Software Developer | Data Scientist | Web Developer</span></h3> -->
+							<p>
+								<ul class="fh5co-social-icons">
+									<li><a href="#"><i class="icon-github2"></i></a></li>
+									<!-- <li><a href="#"><i class="icon-facebook2"></i></a></li> -->
+									<li><a href="#"><i class="icon-linkedin2"></i></a></li>
+									<!-- <li><a href="#"><i class="icon-dribbble2"></i></a></li> -->
+								</ul>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div id="fh5co-about" class="animate-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>About Me</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<ul class="info">
+						<li><span class="first-block">Full Name:</span><span class="second-block">Sanjana Jain</span></li>
+						<!-- <li><span class="first-block">Phone:</span><span class="second-block">+ 1235 2355 98</span></li> -->
+						<li><span class="first-block">Email:</span><span class="second-block">sanjana1998.jain@gmail.com</span></li>
+						<li><span class="first-block">DOB:</span><span class="second-block">April 21,2001</span></li>
+						<li><span class="first-block">Address:</span><span class="second-block">Ghaziabad,Uttar Pradesh</span></li>
+					</ul>
+				</div>
+				<div class="col-md-8">
+					<h2>Hola</h2>
+					<p>My name is Sanjana Jain.I am currently a junior pursuing Bachelors in Technology in Computer Science </p>
+					<p>I am a data entusiast and currently exploring different feilds in data science.I am a frontend devloper with ardent knowledge of database and hands on experience in full stack devlopment.  </p>
+					<p>
+						<!-- <ul class="fh5co-social-icons">
+							<li><a href="#"><i class="icon-twitter2"></i></a></li>
+							<li><a href="#"><i class="icon-facebook3"></i></a></li>
+							<li><a href="#"><i class="icon-linkedin2"></i></a></li>
+							<li><a href="#"><i class="icon-dribbble2"></i></a></li>
+						</ul> -->
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-resume" class="fh5co-bg-color">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2><a href="https://drive.google.com/file/d/1fXT4vndd32hGZvcOPaTlU5OIarKGIgyF/view?usp=sharing">My Resume</a></h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 col-md-offset-0">
+					<ul class="timeline">
+						<li class="timeline-heading text-center animate-box">
+							<div><h3>Work Experience</h3></div>
+						</li>
+						<li class="animate-box timeline-unverted">
+							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
+							<div class="timeline-panel">
+								<div class="timeline-heading">
+									<h3 class="timeline-title">DSA Scholar</h3>
+									<span class="company">Two Waits- 2021 </span>
+								</div>
+								<div class="timeline-body">
+									<p>•Responsible for content creation for data structures and algorithms</p>
+										<p>•Pseudo Codes and Algorithms in C++ and Python</p>
+								</div>
+							</div>
+						</li>
+						<li class="timeline-inverted animate-box">
+							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
+							<div class="timeline-panel">
+								<div class="timeline-heading">
+									<h3 class="timeline-title">Cyber Security Intern</h3>
+									<span class="company">Cisco Networking Academy - 2021</span>
+								</div>
+								<div class="timeline-body">
+									<p>•Implemented Project on Network design of a Hospital using Packet Tracer.</p>
+								</div>
+							</div>
+						</li>
+						<!-- <li class="animate-box timeline-unverted">
+							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
+							<div class="timeline-panel">
+								<div class="timeline-heading">
+									<h3 class="timeline-title">UI/UX Designer</h3>
+									<span class="company">Company Name - 2010 - 2012</span>
+								</div>
+								<div class="timeline-body">
+									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+								</div>
+							</div>
+						</li> -->
+<br>
+<li class="timeline-heading text-center animate-box">
+	<div><h3>Achievements</h3></div>
+</li>
+<li class="animate-box timeline-unverted">
+	<div class="timeline-badge"><i class="icon-trophy"></i></div>
+	<div class="timeline-panel">
+		<div class="timeline-heading">
+			<h3 class="timeline-title">National ACM Hackathon</h3>
+			<span class="company">Third Position </span>
+		</div>
+		<div class="timeline-body">
+			<p>24 hour hackathon with on the spot problem statement .</p>
+				
+		</div>
+	</div>
+</li>
+
+<li class="timeline-inverted animate-box">
+	<div class="timeline-badge"><i class="icon-trophy"></i></div>
+	<div class="timeline-panel">
+		<div class="timeline-heading">
+			<h3 class="timeline-title">Intelligentzia Hackathon, E Cell IET Lucknow</h3>
+			<span class="company">Second Position- 2021</span>
+		</div>
+		<div class="timeline-body">
+			<p>Project presentation with focus on Prototype working and Business Model</p>
+		</div>
+	</div>
+</li>
+
+<li class="animate-box timeline-unverted">
+	<div class="timeline-badge"><i class="icon-trophy"></i></div>
+	<div class="timeline-panel">
+		<div class="timeline-heading">
+			<h3 class="timeline-title">Agri India hackathon, ICAR-2021</h3>
+			<span class="company">Top 300 (among 6K+ Teams) </span>
+		</div>
+		<div class="timeline-body">
+			<p>Focus on Scalibility and feasibility of prototype in agriculture sector and Sustainable Bussiness Model </p>
+				
+		</div>
+	</div>
+</li>
+
+<li class="timeline-inverted animate-box">
+	<div class="timeline-badge"><i class="icon-trophy"></i></div>
+	<div class="timeline-panel">
+		<div class="timeline-heading">
+			<h3 class="timeline-title">Smart India Hackathon - Internals</h3>
+			<span class="company">Third position - 2022</span>
+		</div>
+		<div class="timeline-body">
+			<p>Qualified for Finals and ongoing screening </p>
+		</div>
+	</div>
+</li>
+						<br>
+						<li class="timeline-heading text-center animate-box">
+							<div><h3>Education</h3></div>
+						</li>
+						<li class="animate-box timeline-unverted">
+							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
+							<div class="timeline-panel">
+								<div class="timeline-heading">
+									<h3 class="timeline-title">Bachelors Degree</h3>
+									<span class="company">Abdul Kalam Technical University- 2019 - 2023</span>
+									<span class="company">ABES Engineering College</span>
+								</div>
+								<div class="timeline-body">
+									<p>CGPA: 9.4</p>
+								</div>
+							</div>
+						</li>
+						<li class="timeline-inverted animate-box">
+							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
+							<div class="timeline-panel">
+								<div class="timeline-heading">
+									<h3 class="timeline-title">Senior Secondary</h3>
+									<span class="company">Seth Anandram Jaipuria School- 2018 - 2019</span>
+								</div>
+								<div class="timeline-body">
+									<p>Percentage:92</p>
+								</div>
+							</div>
+						</li>
+						<li class="animate-box timeline-unverted">
+							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
+							<div class="timeline-panel">
+								<div class="timeline-heading">
+									<h3 class="timeline-title">High School</h3>
+									<span class="company">Seth Anandram Jaipuria School- 2017 - 2018</span>
+								</div>
+								<div class="timeline-body">
+									<p>Percentage:93</p>
+								</div>
+							</div>
+						</li>
+						<!-- <li class="animate-box timeline-unverted">
+							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
+							<div class="timeline-panel">
+								<div class="timeline-heading">
+									<h3 class="timeline-title">Graduation</h3>
+									<span class="company">College Name - 1994 - 1998</span>
+								</div>
+								<div class="timeline-body">
+									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+								</div>
+							</div>
+						</li> -->
+			    	</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="fh5co-features" class="animate-box">
+		<div class="container">
+			<div class="services-padding">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+						<h2>Technologies</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 text-center">
+
+						<div class="feature-left">
+							<span class="icon">
+								<i class="icon-laptop"></i>
+							</span>
+							<div class="feature-copy">
+								<h3>Web Developent</h3>
+								<p>HTML,CSS,JAVASCRIPT,MYSQL,PHP,DJANGO</p>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="col-md-4 text-center">
+						<div class="feature-left">
+							<span class="icon">
+								<i class="icon-bargraph"></i>
+							</span>
+							<div class="feature-copy">
+								<h3>Machine Learning </h3>
+								<p>SCIKIT LEARN,KERAS,COMPUTER VISION</p>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-md-4 text-center">
+						<div class="feature-left">
+							<span class="icon">
+								<i class="icon-search"></i>
+							</span>
+							<div class="feature-copy">
+								<h3> Data Analytics</h3>
+								<p>NUMPY,PANDAS,MATPLOTLIB,SEABORN</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-md-4 text-center">
+
+						<div class="feature-left">
+							<span class="icon">
+								<i class="icon-keyboard"></i>
+							</span>
+							<div class="feature-copy">
+								<h3>Competitive Coder</h3>
+								<p>DATA STRUCTURE AND ALGORITHMS</p>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="col-md-4 text-center">
+						<div class="feature-left">
+							<span class="icon">
+								<i class="icon-cloud"></i>
+							</span>
+							<div class="feature-copy">
+								<h3>Cloud Computing</h3>
+								<p><a href="https://www.cloudskillsboost.google/public_profiles/b4465e27-7bad-4daf-a002-d9021deb02d8">Hands on : QWIKLABS</a></p>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-md-4 text-center">
+						<div class="feature-left">
+							<span class="icon">
+								<i class="icon-network"></i>
+							</span>
+							<div class="feature-copy">
+								<h3>Computer Network</h3>
+								<p>PACKET TRACER</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-skills" class="animate-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>Skills</h2>
+				</div>
+			</div>
+			<div class="row row-pb-md">
+				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
+					<div class="chart" data-percent="95"><span><strong>C/C++</strong>85%</span></div>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
+					<div class="chart" data-percent="93"><span><strong>Python</strong>85%</span></div>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
+					<div class="chart" data-percent="90"><span><strong>MySQL</strong>85%</span></div>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
+					<div class="chart" data-percent="89"><span><strong>PHP</strong>65%</span></div>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
+					<div class="chart" data-percent="85"><span><strong>HTML</strong>95%</span></div>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
+					<div class="chart" data-percent="90"><span><strong>CSS</strong>95%</span></div>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
+					<div class="chart" data-percent="85"><span><strong>Javascript</strong>90%</span></div>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
+					<div class="chart" data-percent="90"><span><strong>Java</strong>65%</span></div>
+				</div>
+			</div>
+			<!-- <div class="row">
+				<div class="col-md-6">
+					<div class="progress-wrap">
+						<h3><span class="name-left">Numpy</span><span class="value-right">95%</span></h3>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
+						  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%">
+						  </div>
+						</div>
+					</div>
+					<div class="progress-wrap">
+						<h3><span class="name-left">Pandas</span><span class="value-right">90%</span></h3>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
+						  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%">
+						  </div>
+						</div>
+					</div>
+					<div class="progress-wrap">
+						<h3><span class="name-left">PHP</span><span class="value-right">80%</span></h3>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
+						  aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+						  </div>
+						</div>
+					</div>
+					<div class="progress-wrap">
+						<h3><span class="name-left">Java</span><span class="value-right">85%</span></h3>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-4 progress-bar-striped active" role="progressbar"
+						  aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width:85%">
+						  </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="progress-wrap">
+						<h3><span class="name-left">Design</span><span class="value-right">100%</span></h3>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-5 progress-bar-striped active" role="progressbar"
+						  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+						  </div>
+						</div>
+					</div>
+					<div class="progress-wrap">
+						<h3><span class="name-left">Ruby</span><span class="value-right">70%</span></h3>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-striped active" role="progressbar"
+						  aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+						  </div>
+						</div>
+					</div>
+					<div class="progress-wrap">
+						<h3><span class="name-left">Python</span><span class="value-right">85%</span></h3>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
+						  aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width:85%">
+						  </div>
+						</div>
+					</div>
+					<div class="progress-wrap">
+						<h3><span class="name-left">jQuery</span><span class="value-right">75%</span></h3>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
+						  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%">
+						  </div>
+						</div>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- <div id="fh5co-work" class="fh5co-bg-dark">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>Work</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 text-center col-padding animate-box">
+					<a href="#" class="work" style="background-image: url(images/portfolio-1.jpg);">
+						<div class="desc">
+							<h3>Project Name</h3>
+							<span>Illustration</span>
+						</div>
+					</a>
+				</div>
+				<div class="col-md-3 text-center col-padding animate-box">
+					<a href="#" class="work" style="background-image: url(images/portfolio-2.jpg);">
+						<div class="desc">
+							<h3>Project Name</h3>
+							<span>Brading</span>
+						</div>
+					</a>
+				</div>
+				<div class="col-md-3 text-center col-padding animate-box">
+					<a href="#" class="work" style="background-image: url(images/portfolio-3.jpg);">
+						<div class="desc">
+							<h3>Project Name</h3>
+							<span>Illustration</span>
+						</div>
+					</a>
+				</div>
+				<div class="col-md-3 text-center col-padding animate-box">
+					<a href="#" class="work" style="background-image: url(images/portfolio-4.jpg);">
+						<div class="desc">
+							<h3>Project Name</h3>
+							<span>Design</span>
+						</div>
+					</a>
+				</div>
+				<div class="col-md-3 text-center col-padding animate-box">
+					<a href="#" class="work" style="background-image: url(images/portfolio-5.jpg);">
+						<div class="desc">
+							<h3>Project Name</h3>
+							<span>Website</span>
+						</div>
+					</a>
+				</div>
+				<div class="col-md-3 text-center col-padding animate-box">
+					<a href="#" class="work" style="background-image: url(images/portfolio-6.jpg);">
+						<div class="desc">
+							<h3>Project Name</h3>
+							<span>Illustration</span>
+						</div>
+					</a>
+				</div>
+				<div class="col-md-3 text-center col-padding animate-box">
+					<a href="#" class="work" style="background-image: url(images/portfolio-7.jpg);">
+						<div class="desc">
+							<h3>Project Name</h3>
+							<span>Brading</span>
+						</div>
+					</a>
+				</div>
+				<div class="col-md-3 text-center col-padding animate-box">
+					<a href="#" class="work" style="background-image: url(images/portfolio-8.jpg);">
+						<div class="desc">
+							<h3>Project Name</h3>
+							<span>Illustration</span>
+						</div>
+					</a>
+				</div>
+			</div> -->
+		</div>
+	</div>
+
+	<div id="fh5co-blog">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>PROJECTS</h2>
+					</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="fh5co-blog animate-box">
+						<a href="#" class="blog-bg" style="background-image: url(images/portfolio-1.jpg);"></a>
+						<div class="blog-text">
+							<!-- <span class="posted_on">Mar. 15th 2016</span> -->
+							<h3><a href="#">AGRONOMICS</a></h3>
+							<p>This website give boost to the farmers by linking farms to markets and agribusinesses,to create a dynamic, modern agricultural sector without interference of
+								middlemen</p>
+							<ul class="stuff">
+								<!-- <li><i class="icon-heart2"></i>249</li>
+								<li><i class="icon-eye2"></i>308</li> -->
+								<li><a href="#">LINK<i class="icon-arrow-right22"></i></a></li>
+							</ul>
+						</div> 
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="fh5co-blog animate-box">
+						<a href="#" class="blog-bg" style="background-image: url(images/portfolio-1.jpg);"></a>
+						<div class="blog-text">
+							<!-- <span class="posted_on">Mar. 15th 2016</span> -->
+							<h3><a href="#">MEDICAMENT</a></h3>
+							<p>System for prescribing drugs in hospitals and their substitutes availability in local
+								medical shops with constraints like company, salts and price.</p>
+							<ul class="stuff">
+								<!-- <li><i class="icon-heart2"></i>249</li>
+								<li><i class="icon-eye2"></i>308</li> -->
+								<li><a href="#">LINK<i class="icon-arrow-right22"></i></a></li>
+							</ul>
+						</div> 
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="fh5co-blog animate-box">
+						<a href="#" class="blog-bg" style="background-image: url(images/portfolio-1.jpg);"></a>
+						<div class="blog-text">
+							<!-- <span class="posted_on">Mar. 15th 2016</span> -->
+							<h3><a href="#">SAS</a></h3>
+							<p>It is virtual personal assistant which is designed to minimize the human efforts to interact with many other subsystem . It can store the asked question to the local server
+								and revert it.</p>
+							<ul class="stuff">
+								<!-- <li><i class="icon-heart2"></i>249</li>
+								<li><i class="icon-eye2"></i>308</li> -->
+								<li><a href="#">LINK<i class="icon-arrow-right22"></i></a></li>
+							</ul>
+						</div> 
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="fh5co-blog animate-box">
+						<a href="#" class="blog-bg" style="background-image: url(images/portfolio-1.jpg);"></a>
+						<div class="blog-text">
+							<!-- <span class="posted_on">Mar. 15th 2016</span> -->
+							<h3><a href="#">TOUR-PLAN</a></h3>
+							<p>Plan your Tour-availible </p>
+							<p>Tour plans,accomodations , tourist spots.</p>
+							<ul class="stuff">
+								<!-- <li><i class="icon-heart2"></i>249</li>
+								<li><i class="icon-eye2"></i>308</li> -->
+								<li><a href="#">LINK<i class="icon-arrow-right22"></i></a></li>
+							</ul>
+						</div> 
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="fh5co-blog animate-box">
+						<a href="#" class="blog-bg" style="background-image: url(images/portfolio-1.jpg);"></a>
+						<div class="blog-text">
+							<span class="posted_on">Ongoing</span>
+							<h3><a href="#">Predicting-Depression-Anxiety-and-Stress</a></h3>
+							<p>To automate and compute the detection of possible vulnerability to Depression before its onset</p>
+							<ul class="stuff">
+								<!-- <li><i class="icon-heart2"></i>249</li>
+								<li><i class="icon-eye2"></i>308</li> -->
+								<!-- <li><a href="#">LINK<i class="icon-arrow-right22"></i></a></li> -->
+							</ul>
+						</div> 
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="fh5co-blog animate-box">
+						<a href="#" class="blog-bg" style="background-image: url(images/portfolio-1.jpg);"></a>
+						<div class="blog-text">
+							<span class="posted_on">Ongoing</span>
+							<h3><a href="#">4U</a></h3>
+							<p>To deploy a model to automate the process of physiotherapy rehabilitation programs to help the doctors and the patients. </p>
+							<!-- <p>One module is to integrate an API to analyze daily vitals. </p> -->
+							<ul class="stuff">
+								<!-- <li><i class="icon-heart2"></i>249</li>
+								<li><i class="icon-eye2"></i>308</li> -->
+								<!-- <li><a href="#">LINK<i class="icon-arrow-right22"></i></a></li> -->
+							</ul>
+						</div> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- <div id="fh5co-started" class="fh5co-bg-dark">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>Hire Me!</h2>
+					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+					<p><a href="#" class="btn btn-default btn-lg">Contact Us</a></p>
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+	<div id="fh5co-consult">
+		<div class="video fh5co-video" style="background-image: url(images/cover_bg_1.jpg);">
+			<div class="overlay"></div>
+		</div>
+		<div class="choose animate-box">
+			<h2>Contact Me!</h2>
+			<form action="#">
+				<div class="row form-group">
+					<div class="col-md-6">
+						<input type="text" id="fname" class="form-control" placeholder="Your firstname">
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-md-6">
+						<input type="text" id="lname" class="form-control" placeholder="Your lastname">
+					</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col-md-12">
+						<input type="text" id="email" class="form-control" placeholder="Your email address">
+					</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col-md-12">
+						<input type="text" id="subject" class="form-control" placeholder="Your subject of this message">
+					</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col-md-12">
+						<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Purpose"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Send Message" class="btn btn-primary">
+				</div>
+
+			</form>	
+		</div>
+	</div>
+
+	<!-- <div id="map" class="fh5co-map"></div>
+	</div>
+	 -->
+	<!-- <div id="fh5co-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p>&copy; 2017 Free HTML5 Template. All Rights Reserved. <br>Designed by <a href="http://freehtml5.co" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.com" target="_blank">Unsplash</a></p>
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Stellar Parallax -->
+	<script src="js/jquery.stellar.min.js"></script>
+	<!-- Easy PieChart -->
+	<script src="js/jquery.easypiechart.min.js"></script>
+	<!-- Google Map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+	<script src="js/google_map.js"></script>
+	
+	<!-- Main -->
+	<script src="js/main.js"></script>
+
+	</body>
+</html>
+
