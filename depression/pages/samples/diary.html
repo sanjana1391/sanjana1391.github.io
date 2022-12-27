@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Diary</title>
+
+    <style>
+        body {
+  height: auto;
+}
+
+.diary {
+  margin: 0px;
+  padding: 5px;
+  width: 100%;
+  height: 105%;
+  color: #ffffff;
+  font-family: Arial;
+  background-color: #6A2F6E;
+  border: 1px solid #ffffff;
+  -moz-border-radius-bottomleft: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  -moz-border-radius-topright: 0px;
+  -webkit-border-top-right-radius: 0px;
+  border-top-right-radius: 0px;
+  -moz-border-radius-topleft: 0px;
+  -webkit-border-top-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+.diary table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 95%;
+  height: 75%;
+  margin: 0px;
+  padding: 0px;
+  margin: auto;
+}
+
+.diary tr:last-child td:last-child {
+  -moz-border-radius-bottomright: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.diary table tr:first-child {
+  height: 10%;
+}
+
+.diary table tr:first-child td:first-child {
+  -moz-border-radius-topleft: 0px;
+  -webkit-border-top-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+.diary table tr:first-child td:last-child {
+  -moz-border-radius-topright: 0px;
+  -webkit-border-top-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.diary tr:last-child td:first-child {
+  -moz-border-radius-bottomleft: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.diary td {
+  vertical-align: top;
+  background-color: #CB93C1;
+  border: 1px solid #ffffff;
+  border-width: 0px 1px 1px 0px;
+  text-align: center;
+  padding: 7px;
+  font-size: 14px;
+  font-family: Arial;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.diary tr:last-child td {
+  border-width: 0px 1px 0px 0px;
+}
+
+.diary tr td:last-child {
+  border-width: 0px 0px 1px 0px;
+}
+
+.diary tr:last-child td:last-child {
+  border-width: 0px 0px 0px 0px;
+}
+
+.diary tr:first-child td {
+  background: -o-linear-gradient(bottom, #AF57AF 5%, #AF57AF 100%);
+  background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #AF57AF), color-stop(1, #AF57AF));
+  background: -moz-linear-gradient( center top, #AF57AF 5%, #AF57AF 100%);
+  background: -o-linear-gradient(top, #AF57AF, 7f00ff);
+  background-color: #AF57AF;
+  border: 0px solid #ffffff;
+  text-align: center;
+  border-width: 0px 0px 1px 1px;
+  font-size: 18px;
+  font-family: Arial;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.diary tr:first-child td:first-child {
+  border-width: 0px 0px 1px 0px;
+}
+
+.diary tr:first-child td:last-child {
+  border-width: 0px 0px 1px 1px;
+}
+
+
+/* //blender
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.blender{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 500px;
+    /*background-color: red;*/
+    background-image: url(https://github.com/vkive/Blender/blob/master/Img/licuadoraApagada.png?raw=true);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.blender.active{
+    background-image: url(https://github.com/vkive/Blender/blob/master/Img/licuadoraEncendida.gif?raw=true);
+}
+.blender-button{
+    margin: 350px auto 0px;
+    width: 70px;
+    height: 70px;
+} */
+    </style>
+</head>
+<body>
+    
+    
+
+
+
+
+
+    
+        <!-- <div class="container">
+            <div id="blender" class="blender">
+                <div id="blender-button" class="blender-button" onclick="controlarBlender()"></div>
+            </div>
+        </div>
+        <audio id="blender-button-sound" src="https://github.com/vkive/Blender/blob/master/Sound/sound_botonLicuadora.mp3" type="audio/mpeg"></audio>
+        <audio id="blender-sound" src="https://github.com/vkive/Blender/blob/master/Sound/sound_licuadora.mp3" type="audio/mpeg" loop></audio>
+   
+
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- //diary -->
+<h1>My Diary</h1>
+        <form name="name" method="POST" onsubmit="return storeData();">
+          <fieldset>
+            <legend>My Diary:</legend>
+            How was your Day:
+            <br>
+            <input type="text" name="Where?" value="" id="where">
+            <br>
+            <br> What you did:
+            <br>
+            <input type="text" name="Event?" value="" id="event">
+            <br>
+            <br> How are you feeling:
+            <br>
+            <input type="text" name="Emotion?" value="" id="emotion">
+            <br>
+            <br> Key Moment:
+            <br>
+            <input type="text" name="Automatic thoughts" value="" id="thoughts">
+            <br>
+            <br> Rational Response:
+            <br>
+            <input type="text" name="Response" value="" id="response">
+            <br>
+            <br>
+            <br>
+            <input type="submit" value="Save Entry">
+          </fieldset>
+        </form>
+        <br>
+        <input type="button" value="Show Diary" onclick="showDiary()"><input type="button" value="Hide Diary" onclick="hideDiary()"><input type="button" value="Clear Diary" onclick="clearDiary()">
+        <a href="../../index.html""><input type="button" value="Go back to Dashboard"></a>
+        <br>
+        <br>
+        <div class="diary">
+          <h2>
+          &nbsp;&nbsp; Diary:
+        </h2>
+          <table>
+            <tr>
+              <td>
+                How was your Day
+              </td>
+              <td>
+                What you did
+              </td>
+              <td>
+                How are you feeling
+              </td>
+              <td>
+                Key Moment
+              </td>
+              <td>
+                Rational Response
+              </td>
+            </tr>
+            <tr>
+              <td id="Where">
+      
+              </td>
+              <td id="Event">
+      
+              </td>
+              <td id="Emotion">
+      
+              </td>
+              <td id="Thoughts">
+      
+              </td>
+              <td id="Response">
+      
+              </td>
+            </tr>
+          </table>
+        </div>
+      </body>
+<script>
+
+var diary = document.getElementsByClassName("diary");
+for (var i = 0; i < diary.length; i++) {
+  diary[i].style.visibility = "hidden";
+}
+
+function storeData() {
+  if (typeof(Storage) !== "undefined") {
+    // Code for localStorage/sessionStorage.
+    localStorage.setItem("Where", document.getElementById("where").value);
+    localStorage.setItem("Event", document.getElementById("event").value);
+    localStorage.setItem("Emotion", document.getElementById("emotion").value);
+    localStorage.setItem("Thoughts", document.getElementById("thoughts").value);
+    localStorage.setItem("Response", document.getElementById("response").value);
+  } else {
+    // Sorry! No Web Storage support..
+  }
+  // return false to stop form going somewhere - NB
+  return false;
+}
+
+function showDiary() {
+  for (var i = 0; i < diary.length; i++) {
+    diary[i].style.visibility = "visible";
+  }
+  
+  var d = new Date();
+  var weekday = new Array(7);
+  weekday[0] = "Sunday";
+  weekday[1] = "Monday";
+  weekday[2] = "Tuesday";
+  weekday[3] = "Wednesday";
+  weekday[4] = "Thursday";
+  weekday[5] = "Friday";
+  weekday[6] = "Saturday";
+
+  var n = weekday[d.getDay()];
+  document.getElementById("Where").innerHTML += "<br>" + n + "<br>" + localStorage.getItem("Where", Where) + "<br>";
+  document.getElementById("Event").innerHTML += "<br>" + localStorage.getItem("Event", Event) + "<br>" + "<br>";
+  document.getElementById("Emotion").innerHTML += "<br>" + localStorage.getItem("Emotion", Emotion) + "<br>" + "<br>";
+  document.getElementById("Thoughts").innerHTML += "<br>" + localStorage.getItem("Thoughts", Thoughts) + "<br>" + "<br>";
+  document.getElementById("Response").innerHTML += "<br>" + localStorage.getItem("Response", Response) + "<br>" + "<br>";
+}
+
+function hideDiary() {
+  for (var i = 0; i < diary.length; i++) {
+    diary[i].style.visibility = "hidden";
+  }
+}
+
+function clearDiary() {
+  for (var i = 0; i < diary.length; i++) {
+    diary[i].innerHTML = '<h2> &nbsp;&nbsp; Diary:</h2><table><tr><td>When/Where</td><td>Event</td><td>Emotion</td><td>Automatic Thoughts</td><td>Rational Response</td></tr><tr><td id="Where"></td><td id="Event"></td><td id="Emotion"></td><td id="Thoughts"></td><td id="Response"></td></tr></table>';
+  }
+}
+</script>
+
+
+<!-- <script>
+    var estadoBlender = "Apagada";
+var soundBlender = document.getElementById("blender-sound");
+var buttomBlender = document.getElementById("blender-button-sound");
+var Blender = document.getElementById("blender");
+
+function controlarBlender(){
+    if (estadoBlender == "Apagada"){
+        estadoBlender = "Encendida";
+        makeBrrBrr();
+        Blender.classList.add("active");
+       /* console.log("Esta Prendido");*/
+    }else{
+        estadoBlender = "Apagada";
+        makeBrrBrr();
+        Blender.classList.remove("active");
+       /* console.log("Esta Apagado");*/
+    }
+}
+
+function makeBrrBrr(){
+    if (soundBlender.paused){
+        buttomBlender.play();
+        soundBlender.play();
+    }else{
+        buttomBlender.play();
+        soundBlender.pause();
+        soundBlender.currentTime=0;
+    }
+}
+</script>
+</body> -->
+</html>
